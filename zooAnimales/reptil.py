@@ -10,6 +10,7 @@ class Reptil (Animal):
         super().__init__(nombre, edad, habitat, genero)
         self._colorEscamas = colorEscamas
         self._largoCola = largoCola
+        Reptil._listado.append(self)
 
     def getLargoCola(self):
         return self._largoCola
@@ -31,14 +32,12 @@ class Reptil (Animal):
     def crearIguana(cls, nombre, edad, genero):
         cls.iguanas+=1
         reptil = Reptil(nombre, edad, "humedal", genero, "verde",3)
-        cls._listado.append(reptil)
         return reptil
 
     @ classmethod
     def crearSerpiente(cls, nombre, edad, genero):
         cls.serpientes+=1
         reptil = Reptil(nombre, edad, "jungla", genero, "blanco",1)
-        cls._listado.append(reptil)
         return reptil
 
     def movimiento():

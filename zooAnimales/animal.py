@@ -1,18 +1,16 @@
-from zooAnimales.mamifero import Mamifero
-from zooAnimales.ave import Ave
-from zooAnimales.reptil import Reptil
-from zooAnimales.pez import Pez
-from zooAnimales.anfibio import Anfibio
+import zooAnimales
 
 class Animal:
     
+    _totalAnimales=0
+
     def __init__(self, nombre, edad, habitat, genero):
-        self._totalAnimales+=1
         self._nombre = nombre
         self._edad = edad
         self._habitat=habitat
         self._genero=genero
         self._zona=None
+        Animal._totalAnimales+=1
 
     def getNombre(self):
         return self._nombre
@@ -50,14 +48,14 @@ class Animal:
     def movimiento():
         return "desplazarse"
 
-    def __str__(self):
+    def toString(self):
         if self._zona is None:
-            cadena="Mi nombre es "+self._nombre+", tengo una edad de "+self._edad+", habito en "+self._habitat+" y mi genero es "+self._genero
+            cadena="Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self._habitat+" y mi genero es "+self._genero
         else:
-            cadena="Mi nombre es "+self._nombre+", tengo una edad de "+self._edad+", habito en "+self._habitat+" y mi genero es "+self._genero+", la zona en la que me ubico es "+self._zona.getNombre()+", en el "+self._zona.getZoo().getNombre()
+            cadena="Mi nombre es "+self._nombre+", tengo una edad de "+str(self._edad)+", habito en "+self._habitat+" y mi genero es "+self._genero+", la zona en la que me ubico es "+self._zona.getNombre()+", en el "+self._zona.getZoo().getNombre()
         return cadena
     
     def totalPorTipo():
-        cadena="Mamiferos: "+Mamifero.cantidadMamiferos()+"\nAves: "+Ave.cantidadAves()+"\nReptiles: "+Reptil.cantidadReptiles()+"\nPeces: "+Pez.cantidadPeces()+"\nAnfibios: "+Anfibio.cantidadAnfibios()
-
+        cadena="Mamiferos : "+str(zooAnimales.mamifero.Mamifero.cantidadMamiferos())+"\nAves : "+str(zooAnimales.ave.Ave.cantidadAves())+"\nReptiles : "+str(zooAnimales.reptil.Reptil.cantidadReptiles())+"\nPeces : "+str(zooAnimales.pez.Pez.cantidadPeces())+"\nAnfibios : "+str(zooAnimales.anfibio.Anfibio.cantidadAnfibios())
+        return cadena
     
